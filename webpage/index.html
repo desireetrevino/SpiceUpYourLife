@@ -18,16 +18,17 @@
 </head>
 
 <body>
+  <div class ="bg_image">&nbsp;
 
 <!-- Header -->
   <div class="maintitle"></div>
-  <h1><u>Spice Up Your Life!</u></h1>
+  <h1 class="white-text-with-black-shadow"><u>Spice Up Your Life!</u></h1>
   <!-- State Selection -->
   <section id="body">  
 
-    <h2>Welcome to the best wine recommendation website! We use the best algorithms to help you find your next favorite wine.</h2>
+    <h2 class="white-text-with-black-shadow">Welcome to the best wine recommendation website! We use the best algorithms to help you find your next favorite wine.</h2>
     
-    <h3>Choose a wine characteristic that you like to get a personalized wine recommendation:</h3>
+    <h3 class="white-text-with-black-shadow">Choose a wine characteristic that you like to get a personalized wine recommendation:</h3>
     <select id="wine_desc" onchange="onStateSelectChange(this.value)">
       <option value="tart">Tart</option>
       <option value="zesty">Zesty</option>
@@ -74,7 +75,7 @@
   
    <!-- Moon phases section -->
   <section id="recommendations">
-    <h2>Here are some wines you might like:</h2>
+    <h2 class="white-text-with-black-shadow">Here are some wines you might like:</h2>
 
     <table class="wine_table">
         <tr id="wine_headers"></tr>
@@ -96,15 +97,15 @@
 <br>  <br>
 
 <div id="resources">
-  <h2><u>Where did we got all our info?</u></h2><br>
+  <h2 class="white-text-with-black-shadow"><u>Where did we got all our info?</u></h2><br>
 
-  <h3>Dataset</h3><br>
+  <h3 class="white-text-with-black-shadow">Dataset</h3><br>
     
-  <h3 id="info">Here is the link for our kaggle dataset: </h3><br>
-  <p>link here ✨</p><br>
+  <h3 id="info" class="white-text-with-black-shadow">Here is the link for our kaggle dataset: </h3><br>
+  <p class="white-text-with-black-shadow">link here ✨</p><br>
   
-  <h3 id="info2">Wine descriptions and what they really mean:</h3><br><br>
-  <p>link to wine folly ✨</p><br>
+  <h3 id="info2" class="white-text-with-black-shadow">Wine descriptions and what they really mean:</h3><br><br>
+  <p class="white-text-with-black-shadow">link to wine folly ✨</p><br>
 
 
 
@@ -127,6 +128,7 @@
   <script type="text/javascript" src="static/js/logic.js"></script>
   <script type="text/javascript" src="static/js/api_keys.js"></script>
 
+</div>
 </body>
 
 </html>
