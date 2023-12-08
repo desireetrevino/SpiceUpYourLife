@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Spice Up Your Life </title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin="" />
+
+  <!-- Our CSS -->
+  <link rel="stylesheet" type="text/css" href="static/css/style.css">
+
+</head>
+
+<body>
+
+<!-- Header -->
+  <div class="maintitle"></div>
+  <h1><u>Spice Up Your Life!</u></h1>
+  <!-- State Selection -->
+  <section id="body">  
+
+    <h2>Welcome to the best wine recommendation website! We use the best algorithms to help you find your next favorite wine.</h2>
+    
+    <h3>Choose a wine characteristic that you like to get a personalized wine recommendation:</h3>
+    <select id="wine_desc" onchange="onStateSelectChange(this.value)">
+      <option value="tart">Tart</option>
+      <option value="zesty">Zesty</option>
+      <option value="angular">Angular</option>
+      <option value="acid">Acid</option>
+      <option value="sweet">Sweet</option>
+      <option value="austere">Austere</option>
+      <option value="big">Big</option>
+      <option value="buttery">Buttery</option>
+      <option value="creamy">Creamy</option>
+      <option value="dry">Dry</option>
+      <option value="smoky">Smoky</option>
+      <option value="complex">Complex</option>
+      <option value="crips">Crisp</option>
+      <option value="dense">Dense</option>
+      <option value="earthy">Earthy</option>
+      <option value="elegant">Elegant</option>
+      <option value="fat">Fat</option>
+      <option value="flabby">Flabby</option>
+      <option value="flamboyant">Flamboyant</option>
+      <option value="fleshy">Fleshy</option>
+      <option value="foodfriendly">Food Friendly</option>
+      <option value="grip">Grip</option>
+      <option value="jammy">Jammy</option>
+      <option value="juicy">Juicy</option>
+      <option value="laserlike">Laser-Like</option>
+      <option value="mineral">Mineral</option>
+      <option value="oaked">Oaked</option>
+      <option value="opulent">Opulent</option>
+      <option value="refined">Refined</option>
+      <option value="silky">Silky</option>
+      <option value="steely">Steely</option>
+      <option value="structured">Structured</option>
+      <option value="tight">Tight</option>
+      <option value="toasty">Toasty</option>
+      <option value="unctuous">Unctuous</option>
+      <option value="unoaked">Unoaked</option>
+      <option value="velvety">Velvety</option>
+      <option value="lush">Lush</option>
+      <option value="smooth">Smooth</option>
+    </select>
+    <br>  <br>
+  </section>
+  
+   <!-- Moon phases section -->
+  <section id="recommendations">
+    <h2>Here are some wines you might like:</h2>
+
+    <table class="wine_table">
+        <tr id="wine_headers"></tr>
+        <tr id="wine_name"></tr>
+        <tr id="wine_category"></tr>
+    </table>
+    
+    <div></div>
+    
+  <br>  <br>
+  <br>  <br>
+  <br>  <br>
+  <br>  <br>
+  <br>  <br>  
+
+  </section>
+
+<br>  <br>
+<br>  <br>
+
+<div id="resources">
+  <h2><u>Where did we got all our info?</u></h2><br>
+
+  <h3>Dataset</h3><br>
+    
+  <h3 id="info">Here is the link for our kaggle dataset: </h3><br>
+  <p>link here ✨</p><br>
+  
+  <h3 id="info2">Wine descriptions and what they really mean:</h3><br><br>
+  <p>link to wine folly ✨</p><br>
+
+
+
+</div>
+
+  <!-- Chart.js JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Leaflet JavaScript -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+
+  <!-- Leaflet Heatmap plugin-->
+  <script type="text/javascript" src="static/js/leaflet-heat.js"></script>
+
+  <!-- D3 JavaScript -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- Our JavaScript -->
+  <script type="text/javascript" src="static/js/logic.js"></script>
+  <script type="text/javascript" src="static/js/api_keys.js"></script>
+
+</body>
+
+</html>
