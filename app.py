@@ -12,9 +12,11 @@ from nltk.stem import WordNetLemmatizer
 
 app = Flask(__name__) 
 
-def word2vec_model(result):
-	wv = KeyedVectors.load("word2vec.wordvectors", mmap='r')
-	return result	
+def word2vec_model(data, result):
+	wvmodel = KeyedVectors.load("Resources/descriptions.model", mmap='r')
+	user_vectors = gensim.utils.simple_preprocess(data, deacc=False, min_len=2, max_len=15)
+	#wvmodel.wv.most_similar(result)
+	return result
 
 @app.route("/") 
 def home(): 
@@ -23,10 +25,30 @@ def home():
 @app.route('/process', methods=['POST']) 
 def process(): 
 	data = request.form.get('data')
+	recommendation = ""
 	user_input = data.translate(str.maketrans(string.punctuation, ' '*len(string.punctuation)))
 	result = [word.lower().strip() for word in user_input.split()]
-	word2vec_model(data, result)
+	word2vec_model(data)
 	return result
 
 if __name__ == '__main__': 
 	app.run(debug=True) 
+
+
+#import itertools
+# import collections
+# counter = collections.Counter(df["country"].values)
+# {k:v for k,v in counter.items() if v>5000}
+# sentence = collections.Counter("the grape wine was made with grape and it tasted of wine".split())
+# doc_accumulator = None
+# for word,count in sentence:
+#     if word in wv.model
+#         if doc_accumulator == None:
+#             doc_accumulator = wv.model[word] * count
+#         else:
+#             doc_accumulator = doc_accumulator + wv.model[word] * count
+
+
+
+
+
