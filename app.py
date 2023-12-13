@@ -16,6 +16,13 @@ def word2vec_model(data, result):
 	wvmodel = KeyedVectors.load("Resources/descriptions.model", mmap='r')
 	user_vectors = gensim.utils.simple_preprocess(data, deacc=False, min_len=2, max_len=15)
 	#wvmodel.wv.most_similar(result)
+	# calculate vector representations of descriptions - same as jupyter notebook
+	# sum the vectors
+	# take their mean
+	# load the model
+	# predict using the vector that we created
+	# model.predict(the mean of the vectors we did with the used description)
+
 	return result
 
 @app.route("/") 
@@ -28,7 +35,7 @@ def process():
 	recommendation = ""
 	user_input = data.translate(str.maketrans(string.punctuation, ' '*len(string.punctuation)))
 	result = [word.lower().strip() for word in user_input.split()]
-	word2vec_model(data)
+	word2vec_model(data, result)
 	return result
 
 if __name__ == '__main__': 
