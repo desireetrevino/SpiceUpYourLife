@@ -10,17 +10,22 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
+nltk.download('punkt')
 
 app = Flask(__name__) 
 
-def data_processing(data, result):
+def data_processing(data):
 	# load word2vec model:
 	wvmodel = KeyedVectors.load("Resources/descriptions.model", mmap='r')
 	# calculate vector representations of descriptions - same as jupyter notebook:
-	text = drop_stop_words(data)
-	text = lemmatize_words(data)
-	text = gensim.utils.simple_preprocess(data)
-	vectors = get_desc_vec(text, wvmodel)
+	filtered_sentence = []
+	drop_stop_words(data, filtered_sentence)
+	print(filtered_sentence)
+	#lemmatize_words(filtered_sentence)
+	#text = gensim.utils.simple_preprocess(text)
+	vectors = get_desc_vec(filtered_sentence, wvmodel)
+	print(vectors)
+	#data = vectors
 	# sum the vectors
 
 	# take their mean
@@ -28,15 +33,23 @@ def data_processing(data, result):
 	# load the knn model
 	
 	# predict using the vector that we created
-	
+
 	# model.predict(the mean of the vectors we did with the used description)
 
-	return result
+	return data
 
-def drop_stop_words(text):
+def drop_stop_words(text, filtered_sentence):
 	nltk.download('stopwords')
 	stop_words = set(stopwords.words('english'))
-	lambda x: ' '.join([word for word in x.split() if word not in (stop_words)])
+	word_tokens = word_tokenize(text)
+	# converts the words in word_tokens to lower case and then checks whether 
+	#they are present in stop_words or not
+	filtered_sentence = [w for w in word_tokens if not w.lower() in stop_words]
+	#with no lower case conversion
+	for w in word_tokens:
+		if w not in stop_words:
+			filtered_sentence.append(w)
+	return filtered_sentence
 
 def lemmatize_words(text):
 	nltk.download('wordnet')
@@ -44,7 +57,6 @@ def lemmatize_words(text):
 	words = text.split()
 	words = [lemmatizer.lemmatize(word,pos='v') for word in words]
 	return ' '.join(words)
-
 
 def get_desc_vec(document, wvmodel):
     return np.array(sum(wvmodel.wv[word] for word in document)/len(document))
@@ -56,10 +68,11 @@ def home():
 @app.route('/process', methods=['POST']) 
 def process(): 
 	data = request.form.get('data')
-	user_input = data.translate(str.maketrans(string.punctuation, ' '*len(string.punctuation)))
-	result = [word.lower().strip() for word in user_input.split()]
-	data_processing(data, result)
-	return result
+	results = gensim.utils.simple_preprocess(data)
+	#user_input = data.translate(str.maketrans(string.punctuation, ' '*len(string.punctuation)))
+	#result = [word.lower().strip() for word in user_input.split()]
+	data_processing(data)
+	return results
 
 if __name__ == '__main__': 
 	app.run(debug=True) 
