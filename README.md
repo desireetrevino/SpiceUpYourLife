@@ -43,7 +43,7 @@ In order to convert the descriptions to vectors using Word2Vec, the description 
 
 * K Means - An elbow curve was used to determine 4 clusters should be used. Then a plot was formed with the clusters. 
 
-![kelbow](./Outputs/kelbow_plot.png)
+![kelbow](./Outputs/kelbow.png)
 
 ![kmeans](./Outputs/kmeans_plot.png)
 
