@@ -14,16 +14,20 @@ nltk.download('punkt')
 
 app = Flask(__name__) 
 
-def data_processing(data):
+def data_processing(data, recommendation):
 	# load word2vec model:
-	wvmodel = KeyedVectors.load("Resources/descriptions.model", mmap='r')
+	model = KeyedVectors.load("Resources/descriptions.model", mmap='r')
+	user_input = data.translate(str.maketrans(string.punctuation, ' '*len(string.punctuation)))
+	description = [word.lower().strip() for word in user_input.split()]
+	clean_description = [w for w in description if w in model.wv]
+	sum(model.wv[word] for word in clean_description)	
 	# calculate vector representations of descriptions - same as jupyter notebook:
-	filtered_sentence = []
-	drop_stop_words(data, filtered_sentence)
-	print(filtered_sentence)
+	#filtered_sentence = []
+	#drop_stop_words(data, filtered_sentence)
+	#print(filtered_sentence)
 	#lemmatize_words(filtered_sentence)
 	#text = gensim.utils.simple_preprocess(text)
-	vectors = get_desc_vec(filtered_sentence, wvmodel)
+	vectors = get_desc_vec(clean_description, model)
 	print(vectors)
 	#data = vectors
 	# sum the vectors
@@ -68,10 +72,7 @@ def home():
 @app.route('/process', methods=['POST']) 
 def process(): 
 	data = request.form.get('data')
-	results = gensim.utils.simple_preprocess(data)
-	#user_input = data.translate(str.maketrans(string.punctuation, ' '*len(string.punctuation)))
-	#result = [word.lower().strip() for word in user_input.split()]
-	data_processing(data)
+	results = "You might like: Chardonnay, Sauvignon Blanc, Riesling, Rosé, White Blend"
 	return results
 
 if __name__ == '__main__': 
