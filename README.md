@@ -39,11 +39,11 @@ In order to convert the descriptions to vectors using Word2Vec, the description 
 
 * TSNE was used for dimensionality reduction
 
-![tsne](./Outputs/tsne_plot.png)
+![TSNE](./Outputs/TSNE_plot.png)
 
 * K Means - An elbow curve was used to determine 4 clusters should be used. Then a plot was formed with the clusters. 
 
-![k_elbow](./Outputs/kmeans_elbow.png)
+![kmeans_elbow](./Outputs/kmeans_elbow.png)
 
 ![kmeans](./Outputs/kmeans_plot.png)
 
