@@ -4,6 +4,8 @@ This wine recommendation model was created as a final project for the University
 
 ![glasses](./Resources/wine_photo.jpg)
 
+<img src=(./Resources/win_photo.jpg) width="100" height="100">
+
 ## Description
 
 The goal of this project is to use Machine Learning to find your preferred wine variety based on your palate descriptors. The original Kaggle dataset contained wines of various varieties, made in different countries, which were then described by several critics. Using this dataset, the sample size was narrowed down to wines produced in the top 12 countries, all of which had >1,000 wines reviewed. To predict which wines would best fit a user's taste profile, several machine learning models were applied to the dataset, such as Word2Vec, TSNE, PCA and KMeans. Using the resulting clusters, a taste description input can be manipulated, the model can determine which cluster the description would fall into, and return a list of wine varieties with similar profiles the user should try. The user interface portion of the project is a website, created using flask, html, and css, which allows a user to input a taste description and return a list of wine varieties.
