@@ -61,7 +61,7 @@ seaborn
 
 A webpage was created to allow a user to input a wine description. Similar to the model, the input data will be manipulated to drop stop words, lemmatize, and tokenize the user input. It will then run through Word2Vec to be converted into vectors. The PCA model and K-Nearest Neighbors, a supervised learning classifier, are used to predict which cluster the mean vector will fall into, and a list of 5 wine varieties in that cluster will be returned to the user. 
 
-![variety](./Resources/variety_photo.jpg)
+![variety](./Resources/variety_photo.png)
 
 ### Summary
 
